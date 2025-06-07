@@ -1,4 +1,3 @@
-#include "../pch.h"
 #include "../include/simultaneous_equations.h"
 
 void loadData(const string& filename, int& N, vector<double>& b, vector<vector<double>>& A) 

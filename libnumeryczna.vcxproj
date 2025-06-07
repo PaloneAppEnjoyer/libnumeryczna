@@ -137,29 +137,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h" />
     <ClInclude Include="include\approximation.h" />
     <ClInclude Include="include\newton_interpolation.h" />
-    <ClInclude Include="include\numeric_differentiation.h" />
     <ClInclude Include="include\numeric_integration.h" />
     <ClInclude Include="include\simultaneous_equations.h" />
     <ClInclude Include="include\solve_diff_eq.h" />
     <ClInclude Include="include\solve_nonlinear_diff_eq.h" />
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="solve_diff_eq_test.h" />
+    <ClInclude Include="test\approximation_test.h" />
+    <ClInclude Include="test\newton_interpolation_test.h" />
+    <ClInclude Include="test\numeric_integration_test.h" />
+    <ClInclude Include="test\simultaneous_equations_test.h" />
+    <ClInclude Include="test\solve_diff_eq_test.h" />
+    <ClInclude Include="test\solve_nonlinear_diff_eq_test.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libnumeryczna.cpp" />
-    <ClCompile Include="pch.cpp" />
-    <ClCompile Include="solve_diff_eq_test.cpp" />
     <ClCompile Include="src\approximation.cpp" />
     <ClCompile Include="src\newton_interpolation.cpp" />
-    <ClCompile Include="src\numeric_differentiation.cpp" />
     <ClCompile Include="src\numeric_integration.cpp" />
     <ClCompile Include="src\simultaneous_equations.cpp" />
     <ClCompile Include="src\solve_diff_eq.cpp" />
     <ClCompile Include="src\solve_nonlinear_diff_eq.cpp" />
+    <ClCompile Include="test\approximation_test.cpp" />
     <ClCompile Include="test\main.cpp" />
+    <ClCompile Include="test\newton_interpolation_test.cpp" />
+    <ClCompile Include="test\numeric_integration_test.cpp" />
+    <ClCompile Include="test\simultaneous_equations_test.cpp" />
+    <ClCompile Include="test\solve_diff_eq_test.cpp" />
+    <ClCompile Include="test\solve_nonlinear_diff_eq_test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

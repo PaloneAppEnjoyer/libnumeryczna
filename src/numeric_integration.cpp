@@ -1,5 +1,4 @@
 //ca³kowanie nuemryczne L6, L7
-#include "../pch.h"
 #include "../include/numeric_integration.h"
 
 double Integration::integrate(std::function<double(double)> func, double a, double b, int n, Types type)

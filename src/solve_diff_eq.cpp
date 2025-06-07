@@ -1,4 +1,3 @@
-#include "../pch.h"
 #include "../include/solve_diff_eq.h"
 
 //rozwi¹zywanie równañ ró¿niczkowych L9, L10

@@ -1,7 +1,6 @@
 #ifndef DIFFERENTIAL_EQUATION_SOLVER_H  
 #define DIFFERENTIAL_EQUATION_SOLVER_H  
 
-#include "../pch.h"
 #include <stdexcept> // Dodanie nag³ówka dla std::invalid_argument  
 
 class DifferentialEquationSolver {  

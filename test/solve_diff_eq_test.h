@@ -2,4 +2,5 @@
 #ifndef SOLVE_DIFF_EQ_TEST_H
 #define SOLVE_DIFF_EQ_TEST_H
 int test1();
+int test2();
 #endif

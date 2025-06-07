@@ -7,3 +7,8 @@ int test1()
 	cout << "Test 1: Rozwi¹zywanie równañ ró¿niczkowych" << endl;
     return 0;
 }
+
+int test2()
+{
+    return 0;
+}

@@ -18,16 +18,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="include\approximation.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="include\newton_interpolation.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="include\numeric_differentiation.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="include\numeric_integration.h">
@@ -42,24 +36,30 @@
     <ClInclude Include="include\solve_nonlinear_diff_eq.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="test\approximation_test.h">
+      <Filter>tests</Filter>
     </ClInclude>
-    <ClInclude Include="solve_diff_eq_test.h">
+    <ClInclude Include="test\newton_interpolation_test.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="test\numeric_integration_test.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="test\simultaneous_equations_test.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="test\solve_diff_eq_test.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="test\solve_nonlinear_diff_eq_test.h">
       <Filter>tests</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libnumeryczna.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="src\approximation.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="src\newton_interpolation.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="src\numeric_differentiation.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="src\numeric_integration.cpp">
@@ -74,13 +74,25 @@
     <ClCompile Include="src\solve_nonlinear_diff_eq.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="pch.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="test\main.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="solve_diff_eq_test.cpp">
+    <ClCompile Include="test\approximation_test.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="test\newton_interpolation_test.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="test\numeric_integration_test.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="test\simultaneous_equations_test.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="test\solve_diff_eq_test.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="test\solve_nonlinear_diff_eq_test.cpp">
       <Filter>tests</Filter>
     </ClCompile>
   </ItemGroup>

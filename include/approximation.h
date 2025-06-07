@@ -4,7 +4,6 @@
 #define APPROXIMATION_H 
 
 
-#include "../pch.h"
 #include <iostream>
 #include <vector>
 #include <cmath>

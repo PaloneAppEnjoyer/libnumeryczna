@@ -4,7 +4,6 @@
 #include <sstream>
 #include <cmath>
 #include <iomanip>
-#include "../pch.h"
 
 using namespace std;
 

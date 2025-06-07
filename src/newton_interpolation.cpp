@@ -1,4 +1,3 @@
-#include "../pch.h"
 #include "../include/newton_interpolation.h"
 
 
