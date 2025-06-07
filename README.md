@@ -1,15 +1,15 @@
 # Dokumentacja Biblioteki Numerycznej
 
 ## Spis treści
-1. [Wprowadzenie](#wprowadzenie)
-2. [Rozwiązywanie równań różniczkowych](#rozwiązywanie-równań-różniczkowych)
-3. [Rozwiązywanie równań nieliniowych](#rozwiązywanie-równań-nieliniowych)
-4. [Aproksymacja funkcji](#aproksymacja-funkcji)
-5. [Interpolacja Newtona](#interpolacja-newtona)
-6. [Całkowanie numeryczne](#całkowanie-numeryczne)
-7. [Rozwiązywanie układów równań liniowych](#rozwiązywanie-układów-równań-liniowych)
-8. [Przykłady użycia](#przykłady-użycia)
-9. [Wymagania i kompilacja](#wymagania-i-kompilacja)
+1. Wprowadzenie
+2. Rozwiązywanie równań różniczkowych
+3. Rozwiązywanie równań nieliniowych
+4. Aproksymacja funkcji
+5. Interpolacja Newtona
+6. Całkowanie numeryczne
+7. Rozwiązywanie układów równań liniowych
+8. Przykłady użycia
+9. Wymagania i kompilacja
 
 ## Wprowadzenie
 
@@ -164,30 +164,57 @@ double result = integrator.integrate([](double x) { return x*x; }, 0, 1, 1000,
                                    Integration::Types::GAUSS_LEGENDRE);
 ```
 
-## Rozwiązywanie układów równań liniowych
+## Rozwiązywanie liniowych układów równań
 
-### Funkcje globalne
+Biblioteka implementuje rozwiązanie układów równań liniowych metodą rozkładu LU macierzy współczynników.
 
-Biblioteka dostarcza zestaw funkcji do rozwiązywania układów równań liniowych metodą LU:
+Metoda działa w następujących krokach:
 
-```cpp
-void luDecomposition(vector<vector<double>>& A, vector<vector<double>>& L, 
-                    vector<vector<double>>& U, int N)
-vector<double> forwardSubstitution(const vector<vector<double>>& L, 
-                                 const vector<double>& b, int N)
-vector<double> backwardSubstitution(const vector<vector<double>>& U, 
-                                  const vector<double>& y, int N)
-vector<double> solveLU(vector<vector<double>>& A, vector<double>& b, int N)
-```
+1. *Rozkład LU*  
+   Macierz współczynników A jest rozkładana na iloczyn macierzy dolnotrójkątnej L oraz macierzy górnotrójkątnej U, tak że A = L * U.  
+   W trakcie rozkładu sprawdzana jest możliwość przeprowadzenia dekompozycji — w przypadku macierzy osobliwej (zerowy element na diagonali U) proces zostaje przerwany z komunikatem błędu.
+
+2. *Podstawienie do przodu*  
+   Rozwiązujemy układ L * y = b, gdzie b to wektor wyrazów wolnych, aby wyznaczyć wektor pośredni y.
+
+3. *Podstawienie do tyłu*  
+   Rozwiązujemy układ U * x = y w celu znalezienia wektora rozwiązań x.
+
+4. *Weryfikacja wyniku*  
+   Po obliczeniu rozwiązania wykonywane jest sprawdzenie poprawności przez porównanie iloczynu A * x z wektorem b. Różnice poszczególnych elementów są wypisywane na standardowe wyjście.
+
+Metoda jest zaimplementowana z dokładnością do małej wartości EPSILON = 1e-9 przy sprawdzaniu zerowości elementów diagonalnych, co zabezpiecza przed dzieleniem przez zero i błędami numerycznymi.
 
 #### Przykład użycia
 
-```cpp
-vector<vector<double>> A = {{4, 3}, {6, 3}};
-vector<double> b = {10, 12};
-int N = 2;
+1. Utwórz obiekt klasy solveEquationSystem, podając w konstruktorze macierz współczynników A (w postaci wektora wektorów double) oraz wektor wyrazów wolnych b (wektor double).
 
-auto solution = solveLU(A, b, N);
+2. Wywołaj metodę solveLU(), która zwraca wektor rozwiązań x.
+
+```cpp
+#include "simultaneous_equations.h"
+#include <vector>
+#include <iostream>
+
+int main() {
+    std::vector<std::vector<double>> A = {
+        {4, 3, 0},
+        {3, 4, -1},
+        {0, -1, 4}
+    };
+    std::vector<double> b = {24, 30, -24};
+
+    solveEquationSystem solver(A, b);
+    std::vector<double> x = solver.solveLU();
+
+    std::cout << "Rozwiązanie układu:" << std::endl;
+    for (double val : x) {
+        std::cout << val << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
 ```
 
 ## Przykłady użycia
