@@ -4,7 +4,7 @@
 using namespace std;
 int test1()
 {
-	cout << "Test 1: Rozwi¹zywanie równañ ró¿niczkowych" << endl;
+	cout << "Test 1: Rozwiazywanie rownan roniczkowych" << endl;
     return 0;
 }
 

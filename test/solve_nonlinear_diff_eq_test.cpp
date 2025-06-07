@@ -4,7 +4,7 @@
 using namespace std;
 int test3()
 {
-	cerr << "Test 3: Rozwi¹zywanie równañ nieliniowych ró¿niczkowych" << endl;
+	cerr << "Test 3: Rozwiazywanie rownan nieliniowych roniczkowych" << endl;
 	return 0;
 }
 
