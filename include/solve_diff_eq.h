@@ -10,8 +10,7 @@ enum class Types
 {  
 	EULER, HEUN, MIDPOINT, RUNGE_KUTTA4  
 };  
-DifferentialEquationSolver() {  
-}  
+DifferentialEquationSolver() = default;
 long double solve(Types type, double (*func)(double), double initial_value, double max_iteration_value, double step_size) {  
 	if (step_size <= 0) {  
 		throw std::invalid_argument("Step size must be positive.");  

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
-#include "simultaneous_equations.h"
+#include "../include/simultaneous_equations.h"
 
 using namespace std;
 

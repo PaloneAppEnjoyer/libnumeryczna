@@ -1,11 +1,10 @@
-#include "simultaneous_equations.h"
+#include "../include/simultaneous_equations.h"
 #include <iostream>
 #include <iomanip>
 #include <cmath>
 
 using namespace std;
 
-const double EPSILON = 1e-9;
 
 void solveEquationSystem::printMatrix(const vector<vector<double>>& matrix, const string& name, int iteration)
 {
@@ -34,7 +33,7 @@ void solveEquationSystem::luDecomposition(vector<vector<double>>& L, vector<vect
 
         if (fabs(U[i][i]) < EPSILON) {
             cerr << "Błąd: Macierz osobliwa, nie można przeprowadzić LU (zerowy element diagonalny U)." << endl;
-            exit(1);
+            return;
         }
 
         // Oblicz L

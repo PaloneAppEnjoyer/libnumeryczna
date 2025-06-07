@@ -13,7 +13,6 @@
 using namespace std;
 
 void runTests() {
-
 	cout << "Running tests..." << endl;
 	test1();
 	test2();
@@ -32,6 +31,6 @@ void runTests() {
 int main() {
 	setlocale(LC_CTYPE, "Polish");
 	runTests();
-	cout << "All tests passed!" << endl;
+	cout << "All tests executed!" << endl;
 	return 0;
 }

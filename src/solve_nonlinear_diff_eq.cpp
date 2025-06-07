@@ -8,6 +8,24 @@ using namespace std;
 
 //rozwi¹zywanie równañ nieliniowych L11, L12
 
+std::vector<double> NonlinearDifferentialEquationSolver::solve(Type type, double(*f)(double), double start, double end)
+{
+    
+	if (start >= end) {
+		throw std::invalid_argument("Pocz¹tek przedzia³u musi byæ mniejszy ni¿ koniec.");
+	}
+	switch (type) {
+	case Type::BISECTION:
+		return { bisection(f, start, end) };
+	case Type::FALSI:
+		return regula_falsi_single(f, start, end);
+	case Type::SECANT:
+		return { secant(f, start, end) };
+	default:
+		throw std::invalid_argument("Nieobs³ugiwany typ metody rozwi¹zywania równañ nieliniowych.");
+	}
+}
+
 std::vector<std::vector<double>> NonlinearDifferentialEquationSolver::find_all_roots(double(*f)(double), double start, double end)
 {
     auto intervals = find_intervals(f, start, end);
@@ -77,30 +95,6 @@ std::vector<double> NonlinearDifferentialEquationSolver::regula_falsi_single(dou
     } while (abs(fc) > epsilon && iter < max_iter);
 
     return { c, fc };
-}
-
-double NonlinearDifferentialEquationSolver::newton_analytical(double(*f)(double), double(*df)(double), double x0)
-{
-    double x = x0;
-
-    for (int i = 0; i < max_iter; ++i) {
-        double fx = f(x);
-        double dfx = df(x);
-
-        if (abs(dfx) < std::numeric_limits<double>::epsilon()) {
-            std::cout << "Pochodna bliska zeru - metoda mo¿e nie byæ zbie¿na." << endl;
-            return NAN;
-        }
-        double x_new = x - fx / dfx;
-
-        if (abs(x_new - x) < epsilon) {
-            break;
-        }
-
-        x = x_new;
-    }
-
-    return x;
 }
 
 double NonlinearDifferentialEquationSolver::bisection(double(*f)(double), double a, double b)
