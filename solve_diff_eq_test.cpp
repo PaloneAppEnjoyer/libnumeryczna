@@ -1,0 +1,9 @@
+#include "solve_diff_eq_test.h"
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int test1()
+{
+	cout << "Test 1: Rozwi¹zywanie równañ ró¿niczkowych" << endl;
+    return 0;
+}

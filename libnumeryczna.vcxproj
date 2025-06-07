@@ -27,7 +27,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -80,8 +80,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -114,8 +113,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -148,10 +146,12 @@
     <ClInclude Include="include\solve_diff_eq.h" />
     <ClInclude Include="include\solve_nonlinear_diff_eq.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="solve_diff_eq_test.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libnumeryczna.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="solve_diff_eq_test.cpp" />
     <ClCompile Include="src\approximation.cpp" />
     <ClCompile Include="src\newton_interpolation.cpp" />
     <ClCompile Include="src\numeric_differentiation.cpp" />
@@ -159,6 +159,7 @@
     <ClCompile Include="src\simultaneous_equations.cpp" />
     <ClCompile Include="src\solve_diff_eq.cpp" />
     <ClCompile Include="src\solve_nonlinear_diff_eq.cpp" />
+    <ClCompile Include="test\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
