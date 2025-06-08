@@ -264,6 +264,12 @@ Biblioteka może być skompilowana z dowolnym projektem C++ poprzez dołączenie
 g++ -std=c++11 main.cpp solve_diff_eq.cpp solve_nonlinear_diff_eq.cpp -o program
 ```
 
+### Testy
+Aby uruchomić testy wszystkich metod wystarczy uruchomić plik wykonywalny test_runner.exe lub wpisać polecenie: 
+```bash
+./test_runner.exe
+```
+
 ## Podsumowanie
 
 Biblioteka numeryczna dostarcza kompleksowy zestaw narzędzi do rozwiązywania podstawowych problemów numerycznych w naukach ścisłych i inżynierii. Dzięki przejrzystemu interfejsowi i implementacji różnych metod dla każdego problemu, użytkownik może wybrać najbardziej odpowiednie rozwiązanie dla swojego zadania.
