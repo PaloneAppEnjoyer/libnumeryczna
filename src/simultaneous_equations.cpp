@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 void solveEquationSystem::printMatrix(const vector<vector<double>>& matrix, const string& name, int iteration)
 {
     cout << "\n" << name;
@@ -33,7 +32,7 @@ void solveEquationSystem::luDecomposition(vector<vector<double>>& L, vector<vect
 
         if (fabs(U[i][i]) < EPSILON) {
             cerr << "Błąd: Macierz osobliwa, nie można przeprowadzić LU (zerowy element diagonalny U)." << endl;
-            return;
+            exit(1);
         }
 
         // Oblicz L
