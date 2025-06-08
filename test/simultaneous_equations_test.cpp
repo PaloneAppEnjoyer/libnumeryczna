@@ -7,7 +7,7 @@ using namespace std;
 
 int test5()
 {
-    cout << "\n========== TEST 5: Poprawny układ równań ==========\n";
+    cout << "\nTEST 5: Poprawny uklad rownan\n";
 
     vector<vector<double>> A = {
         {2, -1, 1},
@@ -20,7 +20,7 @@ int test5()
     solveEquationSystem solver(A, b);
     vector<double> result = solver.solveLU();
 
-    cout << "\nRozwiązanie końcowe (x):" << endl;
+    cout << "\nRozwiazanie koncowe (x):" << endl;
     for (size_t i = 0; i < result.size(); ++i)
         cout << "x" << i + 1 << " = " << fixed << setprecision(4) << result[i] << endl;
 
@@ -29,7 +29,7 @@ int test5()
 
 int test6()
 {
-    cout << "\n========== TEST 6: Błędny układ równań (macierz osobliwa) ==========\n";
+    cout << "\nTEST 6: Bledny uklad rownan (macierz osobliwa)\n";
 
     vector<vector<double>> A = {
         {1, 2, 3},
@@ -43,12 +43,12 @@ int test6()
         solveEquationSystem solver(A, b);
         vector<double> result = solver.solveLU();
 
-        cout << "\nRozwiązanie końcowe (x):" << endl;
+        cout << "\nRozwiazanie koncowe (x):" << endl;
         for (size_t i = 0; i < result.size(); ++i)
             cout << "x" << i + 1 << " = " << fixed << setprecision(4) << result[i] << endl;
     }
     catch (...) {
-        cerr << "\nWystąpił wyjątek podczas rozwiązywania układu (najprawdopodobniej macierz osobliwa).\n";
+        cerr << "\nWystapil wyjatek podczas rozwiazywania ukladu (najprawdopodobniej macierz osobliwa).\n";
     }
 
     return 0;

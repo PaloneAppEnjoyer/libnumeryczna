@@ -8,7 +8,7 @@ int test3()
 	NonlinearDifferentialEquationSolver solver;
     double a = 1.0;
     double b = 3.0;
-	double root = solver.solve(NonlinearDifferentialEquationSolver::Type::BISECTION, [](double x) {return x * x - 4;}, a, b)[0]; // Zak³adamy, ¿e metoda zwraca wektor z jednym pierwiastkiem
+	double root = solver.solve(NonlinearDifferentialEquationSolver::Type::BISECTION, [](double x) {return x * x - 4;}, a, b)[0]; // Zakï¿½adamy, ï¿½e metoda zwraca wektor z jednym pierwiastkiem
     double expected = 2.0;
 
     std::cout << "Test 3 (metoda bisekcji):" << std::endl;
@@ -26,13 +26,13 @@ int test3()
 
 int test4()
 {
-	double epsilon = 1e-6; // Domyœlna wartoœæ epsilon
+	double epsilon = 1e-6; // Domyï¿½lna wartoï¿½ï¿½ epsilon
 
-	NonlinearDifferentialEquationSolver solver(epsilon, 2);//2 // Maksymalna liczba iteracji ustawiona na 2, aby wymusiæ b³¹d przy ma³ej liczbie iteracji
+	NonlinearDifferentialEquationSolver solver(epsilon, 2);//2 // Maksymalna liczba iteracji ustawiona na 2, aby wymusiï¿½ bï¿½ï¿½d przy maï¿½ej liczbie iteracji
     double x0 = 1.0;
     double x1 = 2.0;
-	double root = solver.solve(NonlinearDifferentialEquationSolver::Type::SECANT, [](double x) {return x * x * x - x - 2; }, x0, x1)[0]; // Zak³adamy, ¿e metoda zwraca wektor z jednym pierwiastkiem
-    double expected = 1.52138; // Przybli¿ony pierwiastek
+	double root = solver.solve(NonlinearDifferentialEquationSolver::Type::SECANT, [](double x) {return x * x * x - x - 2; }, x0, x1)[0]; // Zakï¿½adamy, ï¿½e metoda zwraca wektor z jednym pierwiastkiem
+    double expected = 1.52138; // Przybliï¿½ony pierwiastek
 
     std::cout << "Test 4 (metoda siecznych):" << std::endl;
     std::cout << "Oczekiwano: " << expected << std::endl;
@@ -42,7 +42,7 @@ int test4()
         std::cout << "Wynik poprawny!" << std::endl;
     }
     else {
-        std::cout << "Wynik niepoprawny (spodziewany b³¹d dla ma³ej liczby iteracji)!" << std::endl;
+        std::cout << "Wynik niepoprawny (spodziewany blad dla malej liczby iteracji)!" << std::endl;
     }
 	return 0;
 }

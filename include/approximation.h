@@ -15,9 +15,12 @@ class approximation
     private:
         int a,b, degree;
     public:
-    approximation(int A, int B, int DEGREE): a(A), b(B), degree(DEGREE) {};
+    approximation(int A, int B, int DEGREE): a(A), b(B), degree(DEGREE) {
+        if (A >= B)
+        throw std::invalid_argument("Nieprawidlowy przedzial: a musi byc < b.");
+    };
     double monomial(int degree, double x);
-    double integrate(std::function<double(double)> func, int n = 1000);
+    double integrate(std::function<double(double)> func, int n = 10000);
     void least_squares_approximation(std::function<double(double)> f);
 };
 

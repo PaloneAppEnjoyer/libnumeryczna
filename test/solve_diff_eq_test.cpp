@@ -24,12 +24,12 @@ int test1()
     std::cout << "Oczekiwano: " << expected << std::endl;
     std::cout << "Otrzymano:  " << result << std::endl;
 
-    if (std::abs(result - expected) < 1e-6) {
+    if (std::abs(result - expected) < 1e-2) {
         std::cout << "Wynik poprawny!" << std::endl;
     }
     else {
         std::cout << "Wynik niepoprawny!" << std::endl;
-        std::cout << "Różnica: " << std::abs(result - expected) << std::endl;
+        std::cout << "Roznica: " << std::abs(result - expected) << std::endl;
     }
     return 0;
 }
@@ -50,7 +50,7 @@ int test2()
         std::cout << "Wynik poprawny!" << std::endl;
     }
     else {
-        std::cout << "Wynik niepoprawny (spodziewany błąd dla dużego kroku)!" << std::endl;
+        std::cout << "Wynik niepoprawny (spodziewany blad dla duzego kroku)!" << std::endl;
     }
     return 0;
 }

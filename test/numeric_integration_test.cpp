@@ -7,12 +7,12 @@ int test7()
     auto linear_func = [](double x) { return 2 * x; };
     double a = 0.0;
     double b = 1.0;
-    int n = 1000; // Du¿a liczba podzia³ów dla dok³adnoœci
+    int n = 1000; // Duï¿½a liczba podziaï¿½ï¿½w dla dokï¿½adnoï¿½ci
 	Integration integration;
     double result = integration.integrate(linear_func, a, b, n, Integration::Types::RECTANGLE);
     double expected = 1.0;
 
-    std::cout << "Test 7 (metoda prostok¹tów):" << std::endl;
+    std::cout << "Test 7 (metoda prostokatow):" << std::endl;
     std::cout << "Oczekiwano: " << expected << std::endl;
     std::cout << "Otrzymano:  " << result << std::endl;
 
@@ -30,13 +30,13 @@ int test8()
     auto quadratic_func = [](double x) { return x * x; };
     double a = 0.0;
     double b = 1.0;
-    int n = 1; // Celowo za ma³o podzia³ów
+    int n = 1; // Celowo za maï¿½o podziaï¿½ï¿½w
 
     Integration integration;
     double result = integration.integrate(quadratic_func, a, b, n, Integration::Types::TRAPEZOID);
     double expected = 0.333333;
 
-    std::cout << "Test 8 (metoda trapezów):" << std::endl;
+    std::cout << "Test 8 (metoda trapezow):" << std::endl;
     std::cout << "Oczekiwano: " << expected << std::endl;
     std::cout << "Otrzymano:  " << result << std::endl;
 

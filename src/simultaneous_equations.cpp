@@ -23,7 +23,6 @@ void solveEquationSystem::luDecomposition(vector<vector<double>>& L, vector<vect
     U.assign(N, vector<double>(N, 0.0));
 
     for (int i = 0; i < N; ++i) {
-        // Oblicz U
         for (int j = i; j < N; ++j) {
             U[i][j] = A[i][j];
             for (int k = 0; k < i; ++k)
@@ -31,11 +30,10 @@ void solveEquationSystem::luDecomposition(vector<vector<double>>& L, vector<vect
         }
 
         if (fabs(U[i][i]) < EPSILON) {
-            cerr << "Błąd: Macierz osobliwa, nie można przeprowadzić LU (zerowy element diagonalny U)." << endl;
-            exit(1);
+            cerr << "Blad: Macierz osobliwa - zerowy element diagonalny U w wierszu " << i << "." << endl;
+            return; // Przerywamy dalsze obliczenia
         }
 
-        // Oblicz L
         for (int j = i; j < N; ++j) {
             if (i == j) {
                 L[i][i] = 1.0;
@@ -74,8 +72,8 @@ vector<double> solveEquationSystem::backwardSubstitution(const vector<vector<dou
     vector<double> x(N, 0.0);
     for (int i = N - 1; i >= 0; --i) {
         if (fabs(U[i][i]) < EPSILON) {
-            cerr << "Błąd: Macierz osobliwa, dzielenie przez zero na diagonali U." << endl;
-            exit(1);
+            cerr << "Blad: Macierz osobliwa - dzielenie przez zero na diagonali U w wierszu " << i << "." << endl;
+            return {}; // Zwracamy pusty wektor
         }
         x[i] = y[i];
         for (int j = i + 1; j < N; ++j)
@@ -83,7 +81,7 @@ vector<double> solveEquationSystem::backwardSubstitution(const vector<vector<dou
         x[i] /= U[i][i];
     }
 
-    cout << "\nWektor x (rozwiązanie):" << endl;
+    cout << "\nWektor x (rozwiazanie):" << endl;
     for (double val : x)
         cout << setw(10) << setprecision(5) << val << " ";
     cout << endl;
@@ -94,13 +92,22 @@ vector<double> solveEquationSystem::backwardSubstitution(const vector<vector<dou
 vector<double> solveEquationSystem::solveLU()
 {
     vector<vector<double>> L, U;
-
     luDecomposition(L, U);
+
+    // Sprawdzamy, czy L lub U są puste — co oznacza, że wystąpił błąd i LU się nie powiodło
+    if (L.empty() || U.empty()) {
+        cerr << "Rozwiazywanie ukladu przerwane - LU nie powiodlo sie." << endl;
+        return {}; // Pusty wektor
+    }
 
     vector<double> y = forwardSubstitution(L, b);
     vector<double> x = backwardSubstitution(U, y);
 
-    // Sprawdzenie: wyliczamy Ax i porównujemy z b
+    if (x.empty()) {
+        cerr << "Rozwiazywanie ukladu przerwane - nie udalo sie uzyskac rozwiazania." << endl;
+        return {};
+    }
+
     vector<double> Ax(N, 0.0);
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < N; ++j)
@@ -110,7 +117,7 @@ vector<double> solveEquationSystem::solveLU()
     for (int i = 0; i < N; ++i) {
         cout << "Ax[" << i << "] = " << fixed << setprecision(6) << Ax[i]
              << ", b[" << i << "] = " << b[i]
-             << ", różnica = " << fabs(Ax[i] - b[i]) << endl;
+             << ", roznica = " << fabs(Ax[i] - b[i]) << endl;
     }
 
     return x;
