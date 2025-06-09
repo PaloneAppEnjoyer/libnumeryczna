@@ -29,5 +29,6 @@ int main()
     cout << "Prady w oczkach:\n";
     for(auto i: currents) 
         cout << i << " A\n";
+    cin.get();
     return 0;
 }
