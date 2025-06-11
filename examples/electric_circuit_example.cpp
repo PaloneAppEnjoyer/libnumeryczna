@@ -24,6 +24,7 @@ vector<double> voltage = {5, 3, 2};
 
 int main()
 {
+    setlocale(LC_CTYPE, "Polish");
     solveEquationSystem circuit(resistance, voltage);
     vector<double> currents = circuit.solveLU();
     cout << "Prady w oczkach:\n";

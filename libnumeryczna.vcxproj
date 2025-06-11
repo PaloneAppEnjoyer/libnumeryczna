@@ -151,6 +151,8 @@
     <ClInclude Include="test\solve_nonlinear_diff_eq_test.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="examples\construction_plot_example.cpp" />
+    <ClCompile Include="examples\electric_circuit_example.cpp" />
     <ClCompile Include="src\approximation.cpp" />
     <ClCompile Include="src\newton_interpolation.cpp" />
     <ClCompile Include="src\numeric_integration.cpp" />
