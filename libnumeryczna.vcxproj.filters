@@ -104,5 +104,8 @@
     <ClCompile Include="examples\construction_plot_example.cpp">
       <Filter>examples</Filter>
     </ClCompile>
+    <ClCompile Include="Makefile">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

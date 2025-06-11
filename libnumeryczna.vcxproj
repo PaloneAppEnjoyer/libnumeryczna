@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="examples\construction_plot_example.cpp" />
     <ClCompile Include="examples\electric_circuit_example.cpp" />
+    <ClCompile Include="Makefile" />
     <ClCompile Include="src\approximation.cpp" />
     <ClCompile Include="src\newton_interpolation.cpp" />
     <ClCompile Include="src\numeric_integration.cpp" />
