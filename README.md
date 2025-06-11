@@ -13,13 +13,20 @@
 
 ## Wprowadzenie
 
-Biblioteka numeryczna dostarcza zestaw narzędzi do rozwiązywania problemów matematycznych w sposób numeryczny. Zawiera implementacje algorytmów dla:
+Biblioteka numeryczna dostarcza zestaw narzędzi do rozwiązywania problemów matematycznych w sposób numeryczny.Zawiera implementacje algorytmów dla:
 
 - Rozwiązywania równań różniczkowych zwyczajnych
 - Znajdowania pierwiastków równań nieliniowych
 - Aproksymacji i interpolacji funkcji
 - Całkowania numerycznego
 - Rozwiązywania układów równań liniowych
+
+Struktura katalogów
+- src/ - kod źródłowy biblioteki
+- include/ - pliki nagłówkowe
+- test/ - testy jednostkowe
+- examples/ - przykłady użycia
+- build/ - katalog build (tworzony automatycznie)
 
 Biblioteka jest napisana w języku C++ i wykorzystuje nowoczesne podejście obiektowe.
 
@@ -185,12 +192,8 @@ Metoda działa w następujących krokach:
 
 Metoda jest zaimplementowana z dokładnością do małej wartości EPSILON = 1e-9 przy sprawdzaniu zerowości elementów diagonalnych, co zabezpiecza przed dzieleniem przez zero i błędami numerycznymi.
 
-#### Przykład użycia
-
-1. Utwórz obiekt klasy solveEquationSystem, podając w konstruktorze macierz współczynników A (w postaci wektora wektorów double) oraz wektor wyrazów wolnych b (wektor double).
-
-2. Wywołaj metodę solveLU(), która zwraca wektor rozwiązań x.
-
+## Przykłady użycia
+### Przykład 1. Rozwiązywanie macierzy metodą LU
 ```cpp
 #include "simultaneous_equations.h"
 #include <vector>
@@ -217,9 +220,7 @@ int main() {
 }
 ```
 
-## Przykłady użycia
-
-### Przykład 1: Rozwiązywanie równania różniczkowego
+### Przykład 2: Rozwiązywanie równania różniczkowego
 
 ```cpp
 #include "solve_diff_eq.h"
@@ -235,7 +236,7 @@ int main() {
 }
 ```
 
-### Przykład 2: Znajdowanie pierwiastków równania nieliniowego
+### Przykład 3: Znajdowanie pierwiastków równania nieliniowego
 
 ```cpp
 #include "solve_nonlinear_diff_eq.h"
@@ -250,24 +251,83 @@ int main() {
     return 0;
 }
 ```
+### Przykład 4: Obliczanie pola krzywych
+```cpp
+#include <iostream>
+#include <cmath>
+#include "../include/numeric_integration.h"
 
-## Wymagania i kompilacja
+// Funkcja opisująca górną granicę działki (np. pomiary terenowe)
+double upperBoundary(double x) {
+    return 30.0 + 0.5 * x; // Przykładowa funkcja sinusoidalna
+}
 
-### Wymagania
-- Kompilator C++ z obsługą standardu C++11 lub nowszego
-- Biblioteka standardowa C++
+// Funkcja opisująca dolną granicę działki (np. prosty wykres liniowy)
+double lowerBoundary(double x) {
+    return 50.0 + 10.0 * std::sin(x / 10.0); // Przykładowa funkcja liniowa
+}
 
-### Kompilacja
-Biblioteka może być skompilowana z dowolnym projektem C++ poprzez dołączenie odpowiednich plików nagłówkowych i źródłowych. Przykładowa kompilacja z użyciem g++:
+int main() {
+    setlocale(LC_CTYPE, "Polish");
+    Integration integrator;
+    double a = 0.0;   // Początek działki (np. w metrach)
+    double b = 100.0; // Koniec działki (np. w metrach)
+    int n = 10000;     // Liczba podziałów (im więcej, tym większa dokładność)
 
-```bash
-g++ -std=c++11 main.cpp solve_diff_eq.cpp solve_nonlinear_diff_eq.cpp -o program
+    // Oblicz powierzchnię między górną a dolną granicą
+    double area = integrator.integrate(
+        [](double x) { return upperBoundary(x) - lowerBoundary(x); },
+        a, b, n, Integration::Types::TRAPEZOID
+    );
+
+
+
+    std::cout << "Powierzchnia działki: " << area << " metrów kwadratowych" << std::endl;
+    return 0;
+}
 ```
 
-### Testy
-Aby uruchomić testy wszystkich metod wystarczy uruchomić plik wykonywalny test_runner.exe lub wpisać polecenie: 
+
+
+
+## Wymagania i Kompilacja
+
+### Wymagania systemowe
+- System operacyjny: Linux/macOS/Windows (z WSL lub MinGW dla Windows)
+- Kompilator: g++ (wspierający standard C++14)
+- Narzędzia: make, ar (do budowania biblioteki statycznej)
+
+### Instalacja zależności (Ubuntu/Debian)
 ```bash
-./test_runner.exe
+sudo apt update
+sudo apt install build-essential
+```
+
+### Kompilacja projektu
+1. Sklonuj repozytorium:
+```bash
+git clone https://github.com/PaloneAppEnjoyer/libnumeryczna.git
+cd libnumeryczna
+```
+
+2. Zbuduj projekt (Projekt domyślnie kompiluje się z optymalizacją O2):
+```bash
+make
+```
+3.(Opcjonalne) Uruchom testy:
+```bash
+make test
+```
+
+4. (Opcjonalne) Zbuduj i uruchom przykłady:
+```bash
+make examples
+./build/example_nazwa_przykladu
+```
+
+5. Czyszczenie projektu:
+```bash
+make clean
 ```
 
 ## Podsumowanie
